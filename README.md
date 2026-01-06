@@ -50,3 +50,17 @@ Os arquivos de manifesto fazem referência aos seguintes secrets:
 
 **Solução Adotada:**
 Em um ambiente GitOps real, utilizamos **SealedSecrets (Bitnami)** ou **External Secrets Operator (Vault)** para injetar esses segredos no momento do deploy. Certifique-se de que esses objetos existam no namespace antes de iniciar a sincronização.
+
+⚠️ Os arquivos 05-nmstate-configs.yaml e 06-baremetal-hosts.yaml foram descontinuados.
+Agora a configuração é realizada por host, dentro do diretório hosts/.
+
+As definições de rede (NMStateConfig) e de hardware bare-metal (BareMetalHost) foram reorganizadas.
+Em vez de arquivos únicos contendo todos os nós do cluster, as configurações agora são separadas por host.
+
+Cada nó possui um diretório próprio dentro de hosts/, contendo:
+
+nmstate.yaml — configuração de interfaces, bond, IP, rotas e DNS
+
+baremetalhost.yaml — definição do BareMetalHost no Metal³
+
+Essa mudança melhora clareza, facilita troubleshooting, e permite múltiplas tentativas de laboratório sem recriar arquivos grandes.
