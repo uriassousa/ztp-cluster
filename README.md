@@ -64,3 +64,5 @@ nmstate.yaml — configuração de interfaces, bond, IP, rotas e DNS
 baremetalhost.yaml — definição do BareMetalHost no Metal³
 
 Essa mudança melhora clareza, facilita troubleshooting, e permite múltiplas tentativas de laboratório sem recriar arquivos grandes.
+
+06 Janeiro 2025
