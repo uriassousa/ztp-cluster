@@ -10,9 +10,7 @@ resources:
 - 02-cluster-deployment.yaml
 - 03-agent-cluster-install.yaml
 - 04-infra-env.yaml
-
-- hosts/host1/nmstate.yaml
-- hosts/host1/baremetalhost.yaml
+- hosts/pmalpdvviro0001
 
 # Labels comuns para facilitar filtragem
 commonLabels:
