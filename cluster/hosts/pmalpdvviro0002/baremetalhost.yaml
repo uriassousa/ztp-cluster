@@ -2,7 +2,7 @@ apiVersion: metal3.io/v1alpha1
 kind: BareMetalHost
 metadata:
   name: pmalpdvviro0002
-  namespace: assisted-installer
+  namespace: ztp-cluster
   labels:
     # Labels para vincular ao InfraEnv e ao AgentClusterInstall
     infraenvs.agent-install.openshift.io: "clalpnpvi01-cartoes"
