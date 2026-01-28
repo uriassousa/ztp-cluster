@@ -9,8 +9,8 @@ metadata:
 
     # Labels que serão repassadas para o NODE final do OpenShift
     machine.openshift.io/cluster-api-cluster: clalpnpvi01-cartoes
-    machine.openshift.io/cluster-api-machine-role: worker
-    machine.openshift.io/cluster-api-machine-type: worker
+    machine.openshift.io/cluster-api-machine-role: master
+    machine.openshift.io/cluster-api-machine-type: master
     torre: cartoes
     ambiente: dev
   annotations:

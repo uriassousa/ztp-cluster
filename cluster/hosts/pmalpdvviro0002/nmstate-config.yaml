@@ -40,7 +40,7 @@ spec:
         enabled: true
         dhcp: false
         address:
-        - ip: 10.158.8.26
+        - ip: 10.158.8.27
           prefix-length: 23
       ipv6: { enabled: false }
     dns-resolver:
