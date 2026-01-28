@@ -2,7 +2,7 @@ apiVersion: extensions.hive.openshift.io/v1beta1
 kind: AgentClusterInstall
 metadata:
   name: sno-cluster2-install
-  namespace: assisted-installer
+  namespace: ztp-cluster
 spec:
   clusterDeploymentRef:
     name: sno-cluster2

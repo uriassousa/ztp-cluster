@@ -2,7 +2,7 @@ apiVersion: agent-install.openshift.io/v1beta1
 kind: InfraEnv
 metadata:
   name: sno-cluster2
-  namespace: assisted-installer
+  namespace: ztp-cluster
 spec:
   pullSecretRef:
     name: pull-secret
