@@ -1,7 +1,7 @@
 apiVersion: metal3.io/v1alpha1
 kind: BareMetalHost
 metadata:
-  name: pmalpdvviro0001
+  name: pmalpdvviro0005
   namespace: assisted-installer
   labels:
     # Labels para vincular ao InfraEnv e ao AgentClusterInstall

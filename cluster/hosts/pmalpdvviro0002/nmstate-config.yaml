@@ -1,7 +1,7 @@
 apiVersion: agent-install.openshift.io/v1beta1
 kind: NMStateConfig
 metadata:
-  name: pmalpdvviro0001-nmstate
+  name: pmalpdvviro0002-nmstate
   namespace: assisted-installer # <--- O mesmo namespace dos arquivos 01-04
   labels:
     # Label para vincular ao InfraEnv que está no arquivo 04
