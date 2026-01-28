@@ -11,6 +11,10 @@ resources:
 - 03-agent-cluster-install.yaml
 - 04-infra-env.yaml
 - hosts/pmalpdvviro0001
+- hosts/pmalpdvviro0002
+- hosts/pmalpdvviro0003
+- hosts/pmalpdvviro0004
+- hosts/pmalpdvviro0005
 
 # Labels comuns para facilitar filtragem
 commonLabels:
