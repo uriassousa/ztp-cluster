@@ -1,0 +1,61 @@
+apiVersion: agent-install.openshift.io/v1beta1
+kind: NMStateConfig
+metadata:
+  name: pmalpdvviro0001-nmstate
+  namespace: assisted-installer # <--- O mesmo namespace dos arquivos 01-04
+  labels:
+    # Label para vincular ao InfraEnv que está no arquivo 04
+    infraenvs.agent-install.openshift.io: "clalpnpvi01-cartoes"
+spec:
+  config:
+    interfaces:
+    - name: eno7
+      type: ethernet
+      state: up
+      ipv4: { enabled: false }
+      ipv6: { enabled: false }
+    - name: eno8
+      type: ethernet
+      state: up
+      ipv4: { enabled: false }
+      ipv6: { enabled: false }
+    - name: bond0
+      type: bond
+      state: up
+      bond:
+        mode: active-backup
+        options:
+          miimon: 100
+          primary: eno7
+      slaves: [ eno7, eno8 ]
+      ipv4: { enabled: false }
+      ipv6: { enabled: false }
+    - name: bond0.2138
+      type: vlan
+      state: up
+      vlan:
+        base-iface: bond0
+        id: 2138
+      ipv4:
+        enabled: true
+        dhcp: false
+        address:
+        - ip: 10.158.8.26
+          prefix-length: 23
+      ipv6: { enabled: false }
+    dns-resolver:
+      config:
+        server:
+        - 10.209.32.192
+    routes:
+      config:
+      - destination: 0.0.0.0/0
+        metric: 150
+        next-hop-address: 10.158.8.11
+        next-hop-interface: bond0.2138
+        table-id: 254
+
+  # AQUI ESTÁ A MÁGICA: Isso diz ao instalador "Aplique esse IP neste MAC"
+  interfaces:
+  - name: "eno7"
+    macAddress: "00:25:B5:2A:02:10" # MAC de BOOT que você passou

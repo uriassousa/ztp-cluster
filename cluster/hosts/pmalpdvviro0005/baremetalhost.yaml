@@ -1,0 +1,33 @@
+apiVersion: metal3.io/v1alpha1
+kind: BareMetalHost
+metadata:
+  name: pmalpdvviro0001
+  namespace: assisted-installer
+  labels:
+    # Labels para vincular ao InfraEnv e ao AgentClusterInstall
+    infraenvs.agent-install.openshift.io: "clalpnpvi01-cartoes"
+
+    # Labels que serão repassadas para o NODE final do OpenShift
+    machine.openshift.io/cluster-api-cluster: clalpnpvi01-cartoes
+    machine.openshift.io/cluster-api-machine-role: worker
+    machine.openshift.io/cluster-api-machine-type: worker
+    torre: cartoes
+    ambiente: dev
+  annotations:
+    # Inspecionar o host mas não provisionar SO (quem faz isso é o Agent)
+    bmo.metal3.io/hardware-profile: "unknown"
+    inspect.metal3.io: "disabled"
+    # Mantenha detach até que o InfraEnv esteja pronto (opcional, mas boa prática)
+    baremetalhost.metal3.io/detached: "false"
+spec:
+  online: true
+  bootMACAddress: '00:25:B5:2A:02:10'
+  bootMode: UEFI
+  bmc:
+    address: 'redfish-virtualmedia://10.209.137.109/redfish/v1/Systems/FCH28497FXA'
+    credentialsName: cisco-ucs-kvm-pmalpdvviro0001
+    disableCertificateVerification: true
+
+  # Importante: No fluxo Agent/ZTP, quem define a imagem ISO é o InfraEnv,
+  # não definimos customDeploy aqui manualmente. O BMH vai bootar a ISO gerada pelo InfraEnv.
+  automatedCleaningMode: metadata
